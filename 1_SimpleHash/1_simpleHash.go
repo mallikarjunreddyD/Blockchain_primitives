@@ -1,3 +1,11 @@
+/**
+* A program to show how a simple hash function works.
+* The hash function size is 15. It can generate values of 0-14
+* In the program the string is converted to byte array and the individual byte values
+* are added. A modulo operation is performed on the cummulative sum and the result
+* is retuned as hash value.
+ */
+
 package main
 
 import (

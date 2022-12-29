@@ -1,3 +1,5 @@
+/** A program to demonstrate differnt commonly used hash functions*/
+
 package main
 
 import (
