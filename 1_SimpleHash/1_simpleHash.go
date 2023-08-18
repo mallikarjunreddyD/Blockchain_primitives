@@ -1,5 +1,5 @@
 /**
-* A program to show how a simple hash function works.
+* This program shows how a simple hash function works.
 * The hash function size is 15. It can generate values of 0-14
 * In the program the string is converted to byte array and the individual byte values
 * are added. A modulo operation is performed on the cummulative sum and the result
@@ -14,7 +14,7 @@ import (
 
 func main() {
 	base := 15
-	fmt.Println(getHash("John smith", base))
+	fmt.Println(getHash("John smith jhgjhguggugugugui", base))
 	fmt.Println(getHash("Lisa Smith", base))
 	fmt.Println(getHash("Sam Doe", base))
 	fmt.Println(getHash("Sandra Dee", base))

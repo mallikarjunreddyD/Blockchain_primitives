@@ -11,10 +11,10 @@ import (
 )
 
 func main() {
-	fmt.Println(getHash("John smith"))
-	fmt.Println(getHash("Lisa Smith"))
-	fmt.Println(getHash("Sam Doe"))
-	fmt.Println(getHash("Sandra Dee"))
+	fmt.Println(getHash("John smiti"))
+	//fmt.Println(getHash("Lisa Smith"))
+	//fmt.Println(getHash("Sam Doe"))
+	//fmt.Println(getHash("Sandra Dee"))
 }
 func getHash(data string) string {
 	result := fmt.Sprintf("MD5: %x, SHA256: %x, Keccak256: %x",
