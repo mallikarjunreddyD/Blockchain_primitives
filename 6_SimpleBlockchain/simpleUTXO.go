@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	ethCommon "github.com/ethereum/go-ethereum/common"
 	ethCrypto "github.com/ethereum/go-ethereum/crypto"
 )
 
@@ -22,17 +23,17 @@ type transaction struct {
 /** A map to store all the UTXO's **/
 var UTXOList map[string]UTXO
 
-func main() {
+func genTransactions() {
 	UTXOList = make(map[string]UTXO)
-	_ = addTrans("100", "Alice")  // Genesis transaction
-	_ = addTrans("50", "Alice")   // Genesis transaction
-	_ = addTrans("70", "Bob")     // Genesis transaction
-	_ = addTrans("60", "Charlie") // Genesis transaction
+	addTrans("100", users[0].address) // Genesis transaction
+	addTrans("50", users[0].address)  // Genesis transaction
+	addTrans("70", users[1].address)  // Genesis transaction
+	addTrans("60", users[2].address)  // Genesis transaction
 
 	fmt.Println("UTXOList after Genesis") // UTXOList after genesis transactions
 	printList(UTXOList)
 
-	Trans1Inputs := []string{"0xe12230b9", "0x069884ac"} // Transaction 1 inputs
+	/* Trans1Inputs := []string{"0xe12230b9", "0x069884ac"} // Transaction 1 inputs
 	Trans1Outputs := []UTXO{{                            // Transaction 1 outputs
 		value: "120",
 		owner: "Darth",
@@ -73,7 +74,7 @@ func main() {
 
 	executeTransaction(Trans3Inputs, Trans3Outputs) // Execute transaction 1
 	fmt.Println("UTXOList after Transaction 3")
-	printList(UTXOList) // UTXOList after transaction 3
+	printList(UTXOList) // UTXOList after transaction  */
 }
 
 func addTrans(value string, owner string) string {
@@ -114,3 +115,13 @@ func printList(UTXOList map[string]UTXO) {
 }
 func validateOutputs() {}
 func verifyOwnership() {}
+func genSignature(privateKey string, data string) string {
+	hash := ethCrypto.Keccak256Hash([]byte(data))
+
+	signatureBytes, err := ethCrypto.Sign(hash.Bytes(), ethCrypto.ToECDSAUnsafe((ethCommon.Hex2Bytes(privateKey))))
+	if err != nil {
+		fmt.Println(err)
+	}
+	signature := ethCommon.Bytes2Hex(signatureBytes)
+	return signature
+}
