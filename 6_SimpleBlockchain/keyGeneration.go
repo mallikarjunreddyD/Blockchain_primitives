@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"os"
 
 	ethCommon "github.com/ethereum/go-ethereum/common"
@@ -57,7 +58,7 @@ func printKeys() {
 }
 
 func saveKeys() {
-	file, err := os.Create("output.json")
+	file, err := os.Create("keys.json")
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
@@ -77,4 +78,26 @@ func saveKeys() {
 		return
 	}
 
+}
+
+func loadKeys() map[int]user {
+	file, err := os.Open("keys.json")
+	if err != nil {
+		fmt.Println("Error:", err)
+		return nil
+	}
+	defer file.Close()
+
+	data, err := io.ReadAll(file)
+	if err != nil {
+		fmt.Println("Error:", err)
+		return nil
+	}
+	userData := make(map[int]user)
+	err = json.Unmarshal(data, &userData)
+	if err != nil {
+		fmt.Println("Error:", err)
+		return nil
+	}
+	return userData
 }

@@ -1,6 +1,7 @@
 package main
 
 func main() {
-	generateKeys()
-	genTransactions()
+	//generateKeys()
+	userData := loadKeys()
+	genTransactions(userData)
 }

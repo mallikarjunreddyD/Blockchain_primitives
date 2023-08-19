@@ -23,58 +23,61 @@ type transaction struct {
 /** A map to store all the UTXO's **/
 var UTXOList map[string]UTXO
 
-func genTransactions() {
+func genTransactions(userData map[int]user) {
 	UTXOList = make(map[string]UTXO)
-	addTrans("100", users[0].Address) // Genesis transaction
-	addTrans("50", users[0].Address)  // Genesis transaction
-	addTrans("70", users[1].Address)  // Genesis transaction
-	addTrans("60", users[2].Address)  // Genesis transaction
+	addTrans("100", userData[0].Address) // Genesis transaction
+	addTrans("50", userData[0].Address)  // Genesis transaction
+	addTrans("70", userData[1].Address)  // Genesis transaction
+	addTrans("60", userData[2].Address)  // Genesis transaction
 
 	fmt.Println("UTXOList after Genesis") // UTXOList after genesis transactions
 	printList(UTXOList)
 
-	/* Trans1Inputs := []string{"0xe12230b9", "0x069884ac"} // Transaction 1 inputs
+	Trans1Inputs := []string{"0x73b45126", "0xd49e7d8b"} // Transaction 1 inputs
 	Trans1Outputs := []UTXO{{                            // Transaction 1 outputs
 		value: "120",
-		owner: "Darth",
+		owner: userData[3].Address,
 	}, {
 		value: "30",
-		owner: "Alice",
+		owner: userData[0].Address,
 	}}
 
 	executeTransaction(Trans1Inputs, Trans1Outputs) // Execute transaction 1
 	fmt.Println("UTXOList after Transaction 1")
 	printList(UTXOList) // UTXOList after transaction 1
 
-	Trans2Inputs := []string{"0xb8a3b7f7"} // Transaction 1 inputs
+	Trans2Inputs := []string{"0x6971747c"} // Transaction 1 inputs
 	Trans2Outputs := []UTXO{{              // Transaction 1 outputs
 		value: "50",
-		owner: "Earl",
+		owner: userData[4].Address,
 	}, {
 		value: "30",
-		owner: "Bob",
+		owner: userData[1].Address,
 	},
 		{
 			value: "30",
-			owner: "Fin",
+			owner: userData[5].Address,
 		}}
 
 	executeTransaction(Trans2Inputs, Trans2Outputs) // Execute transaction 1
 	fmt.Println("UTXOList after Transaction 2")
 	printList(UTXOList) // UTXOList after transaction 2
 
-	Trans3Inputs := []string{"0xc664105e", "0x79fe7899"} // Transaction 1 inputs
+	Trans3Inputs := []string{"0x737f578d", "0x1fad6b7c"} // Transaction 1 inputs
 	Trans3Outputs := []UTXO{{                            // Transaction 1 outputs
-		value: "120",
-		owner: "Darth",
+
+		value: "60",
+		owner: userData[3].Address,
 	}, {
-		value: "",
-		owner: "Alice",
+
+		value: "60",
+		owner: userData[0].Address,
 	}}
 
 	executeTransaction(Trans3Inputs, Trans3Outputs) // Execute transaction 1
 	fmt.Println("UTXOList after Transaction 3")
-	printList(UTXOList) // UTXOList after transaction  */
+	printList(UTXOList) // UTXOList after transaction
+
 }
 
 func addTrans(value string, owner string) string {

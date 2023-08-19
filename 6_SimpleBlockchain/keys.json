@@ -1,0 +1,44 @@
+{
+    "0": {
+        "name": "Alice",
+        "address": "0xb79a53FC0EB78667F752baC03b2bc3FcEeEd707E",
+        "public_key": "04cf295f6768182337c22c5185e859e95ffc2677021bdfa35867fdddf53ce69c32363205a0b92c7a65164c082823c16eae80ff48cdce636d9c7ea44ac37fde6e47",
+        "private_key": "2a3b82a6d55b651ef7d89c0401631553dc98fe7a47f4ad12ad0d09c3bf6738ff"
+    },
+    "1": {
+        "name": "Bob",
+        "address": "0xA1e87ea199D1A84DE19E2A4C7D768B141a8364DE",
+        "public_key": "04191fc6d8115bfadbd36b02f8c27cf19457c46baf6e37d28ef05354f3c6047404c62421b7ba5d446e3d9008d55feb95675ed3d4ef5bbe92ad24514f00a0adcf11",
+        "private_key": "b26fd8c82c49ed767de80c449c85eb9036b1e27df2a8143f51a03ed3f685fc41"
+    },
+    "2": {
+        "name": "Charlie",
+        "address": "0xa2875368867D1fA59CaF9BdF393C532708A25aEd",
+        "public_key": "0499f27cf9e1f12be2000f19a86fbef19a6af13b1c9c57bef920d1d11ae61f6237cb6fd0f65f8587f7d0ca27f907c1704394b894495c92c880ea87e5e142bcff02",
+        "private_key": "3ee5dcc9d2f2c6c0a9e7056758c1c7293572512e84feb86bf236c947259fc2bf"
+    },
+    "3": {
+        "name": "Darth",
+        "address": "0xD259313d467Ab0eca275638CaDbe5b4e3F01Cd77",
+        "public_key": "046caf68bde73305676f75568b23d80d12453d13c26cc013dbb8c071c250b3c7363ec5f4d4e85d00e08d2a1511649322070a12e76fa89de518b93097a88c2bea7c",
+        "private_key": "2448bc3ee21f940113b7b4bd12e1745fcfb019cfa50fbb5aa5119369642db2be"
+    },
+    "4": {
+        "name": "Earl",
+        "address": "0xdaE15CcDF1E958CE35e54154762784B538D0afDa",
+        "public_key": "04583aff8f776ca48e4dd1ef8c94912be092cf2d5b076461de57ae7cdb25bbe65a33b7f5d02885122611b679d4afa5a963831c27f59aa272cbfe427413b10ffcf6",
+        "private_key": "43cd0ade80185d91648a959b8941ab359bb64b20eacc448fe9461941119ff55b"
+    },
+    "5": {
+        "name": "Fin",
+        "address": "0x4c2DB1360A75c4543BA82665d31812E6EFeC6729",
+        "public_key": "048dd07298312e1c421628ec1f87f097081f9e0c18c69c9830c4c49e0d52cf56b20a60d4a23e0a380b3698b59b716fb0dd61a3ea387a8e5f2f91a76e8d81159473",
+        "private_key": "a5d4b6702dc125cd425adae86383b04d461165f109913332a900e724fb31c4e2"
+    },
+    "6": {
+        "name": "Grace",
+        "address": "0x1B294ADF8Fc943dCc01AfDDcD9c2eC71a5A2157e",
+        "public_key": "0409e94c97491d52819e8d8812a951ba46b7c0d56eb09ccf3cccd0e2866c7783f2a21ea3193bb95647eafc180e4fedb995bad9bd339bc9db6197ecdd755f0a8cfd",
+        "private_key": "fabe9b234a6bfbe4ffccf8911e2b52de7231fa0b82c457cdc8e74de7cff78aa5"
+    }
+}
