@@ -10,10 +10,10 @@ import (
 )
 
 type user struct {
-	name       string
-	address    string
-	publicKey  string
-	privateKey string
+	Name       string `json:"name"`
+	Address    string `json:"address"`
+	PublicKey  string `json:"public_key"`
+	PrivateKey string `json:"private_key"`
 }
 
 var users map[int]user
@@ -24,10 +24,10 @@ func generateKeys() {
 	for index, name := range userNames {
 		address, publicKey, privateKey := genKey()
 		user := user{
-			name:       name,
-			address:    address,
-			publicKey:  publicKey,
-			privateKey: privateKey,
+			Name:       name,
+			Address:    address,
+			PublicKey:  publicKey,
+			PrivateKey: privateKey,
 		}
 		users[index] = user
 	}

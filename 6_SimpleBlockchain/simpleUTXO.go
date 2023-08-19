@@ -25,10 +25,10 @@ var UTXOList map[string]UTXO
 
 func genTransactions() {
 	UTXOList = make(map[string]UTXO)
-	addTrans("100", users[0].address) // Genesis transaction
-	addTrans("50", users[0].address)  // Genesis transaction
-	addTrans("70", users[1].address)  // Genesis transaction
-	addTrans("60", users[2].address)  // Genesis transaction
+	addTrans("100", users[0].Address) // Genesis transaction
+	addTrans("50", users[0].Address)  // Genesis transaction
+	addTrans("70", users[1].Address)  // Genesis transaction
+	addTrans("60", users[2].Address)  // Genesis transaction
 
 	fmt.Println("UTXOList after Genesis") // UTXOList after genesis transactions
 	printList(UTXOList)
