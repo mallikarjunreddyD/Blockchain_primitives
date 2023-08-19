@@ -16,6 +16,7 @@ type transaction struct {
 /** A map to store all the UTXO's **/
 var UTXOList map[string]UTXO
 
+/** UTXO Input structure */
 type input struct {
 	Id        string
 	signature string

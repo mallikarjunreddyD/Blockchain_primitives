@@ -1,25 +1,35 @@
 package main
 
 import (
-	"fmt"
-
-	ethCommon "github.com/ethereum/go-ethereum/common"
 	ethCrypto "github.com/ethereum/go-ethereum/crypto"
 )
 
 func execute(value string, owner string) string {
 	trans := UTXO{}
+	transId := getTransactionId(value, owner)
 	trans.value = value
 	trans.owner = owner
-	Id := ethCrypto.Keccak256Hash([]byte(owner), []byte(value)).Hex()
-	Id = Id[:10]
 	trans.spent = false
-	UTXOList[Id] = trans
-	return Id
+	UTXOList[transId] = trans
+	return transId
 }
 
-func executeTransaction(inputs []input, outputs []UTXO) {
+/*
+To calculate transactionId, the full input
+and output scripts must be considered.
+For simplicity, this function takes only value and owner
+*/
+func getTransactionId(value string, owner string) string {
+	Id := ethCrypto.Keccak256Hash([]byte(owner), []byte(value)).Hex()
+	Id = Id[:10]
+	return Id
+}
+func executeTransaction(inputs []input, outputs []UTXO) bool {
 	for _, val := range inputs {
+		result := verifySignature(val)
+		if result == false {
+			return false
+		}
 		trans := UTXOList[val.Id]
 		trans.spent = true
 		UTXOList[val.Id] = trans
@@ -27,17 +37,5 @@ func executeTransaction(inputs []input, outputs []UTXO) {
 	for _, val := range outputs {
 		execute(val.value, val.owner)
 	}
-}
-
-func verifyOwnership() {}
-func genSignature(privateKey string, data string) string {
-
-	hash := ethCrypto.Keccak256Hash([]byte(data))
-
-	signatureBytes, err := ethCrypto.Sign(hash.Bytes(), ethCrypto.ToECDSAUnsafe((ethCommon.Hex2Bytes(privateKey))))
-	if err != nil {
-		fmt.Println(err)
-	}
-	signature := ethCommon.Bytes2Hex(signatureBytes)
-	return signature
+	return true
 }

@@ -7,7 +7,10 @@ func main() {
 	UTXOList = make(map[string]UTXO)
 	//generateKeys()
 	userData := loadKeys()
-	genTransactions(userData)
+	GenesisTransactions(userData)
+	Transaction1(userData)
+	Transaction2(userData)
+	Transaction3(userData)
 }
 
 func printList(UTXOList map[string]UTXO) {

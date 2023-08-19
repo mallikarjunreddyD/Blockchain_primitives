@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func genTransactions(userData map[int]user) {
+func GenesisTransactions(userData map[int]user) {
 	/** Genesis Transactions */
 	execute("100", userData[0].Address) //(100,Alice)
 	execute("50", userData[0].Address)  //(50,Alice)
@@ -11,7 +11,9 @@ func genTransactions(userData map[int]user) {
 
 	fmt.Println("UTXOList after Genesis")
 	printList(UTXOList)
+}
 
+func Transaction1(userData map[int]user) {
 	/** Transaction 1 */
 	input1Id := "0x73b45126" //(100,Alice)
 	input1Sig := genSignature(userData[0].PrivateKey, input1Id)
@@ -33,10 +35,17 @@ func genTransactions(userData map[int]user) {
 		value: "30",
 		owner: userData[0].Address,
 	}}
-
+	/** Transaction 1 execution */
+	result := executeTransaction(Trans1Inputs, Trans1Outputs)
+	if result == true {
+		fmt.Println("Transaction 1 executed succesfully")
+		printList(UTXOList)
+	}
+}
+func Transaction2(userData map[int]user) {
 	/** Transaction 2*/
-	input1Id = "0x6971747c" //(120,Darth)
-	input1Sig = genSignature(userData[3].PrivateKey, input1Id)
+	input1Id := "0x6971747c" //(120,Darth)
+	input1Sig := genSignature(userData[3].PrivateKey, input1Id)
 	Trans2Inputs := []input{{
 		Id:        input1Id,
 		signature: input1Sig,
@@ -51,12 +60,19 @@ func genTransactions(userData map[int]user) {
 		value: "30",
 		owner: userData[5].Address,
 	}}
-
+	/** Transaction 2 execution */
+	result := executeTransaction(Trans2Inputs, Trans2Outputs)
+	if result == true {
+		fmt.Println("Transaction 2 executed succesfully")
+		printList(UTXOList)
+	}
+}
+func Transaction3(userData map[int]user) {
 	/** Transaction 3 */
-	input1Id = "0x737f578d" //(30,Bob)
-	input1Sig = genSignature(userData[1].PrivateKey, input1Id)
-	input2Id = "0x1fad6b7c" //(70,Bob)
-	input2Sig = genSignature(userData[1].PrivateKey, input2Id)
+	input1Id := "0x737f578d" //(30,Bob)
+	input1Sig := genSignature(userData[1].PrivateKey, input1Id)
+	input2Id := "0x1fad6b7c" //(70,Bob)
+	input2Sig := genSignature(userData[1].PrivateKey, input2Id)
 
 	Trans3Inputs := []input{{
 		Id:        input1Id,
@@ -74,19 +90,11 @@ func genTransactions(userData map[int]user) {
 		owner: userData[0].Address,
 	}}
 
-	/** Transaction 1 execution */
-	executeTransaction(Trans1Inputs, Trans1Outputs)
-	fmt.Println("UTXOList after Transaction 1")
-	printList(UTXOList)
-
-	/** Transaction 2 execution */
-	executeTransaction(Trans2Inputs, Trans2Outputs)
-	fmt.Println("UTXOList after Transaction 2")
-	printList(UTXOList)
-
 	/** Transaction 3 execution */
-	executeTransaction(Trans3Inputs, Trans3Outputs)
-	fmt.Println("UTXOList after Transaction 3")
-	printList(UTXOList)
+	result := executeTransaction(Trans3Inputs, Trans3Outputs)
+	if result == true {
+		fmt.Println("Transaction 3 executed succesfully")
+		printList(UTXOList)
+	}
 
 }
