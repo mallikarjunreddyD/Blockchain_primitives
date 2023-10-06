@@ -1,0 +1,38 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/PSChooser.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.17;\n\ncontract PSChooser {\n   uint[] public allNumbers;\n   constructor() {\n     for (uint i=1;i<=56;i++) {\n        allNumbers.push(i);\n     }\n   }\n   event RandomNumber(uint number);\n    \n    function genNumber() public {\n        uint ranIndex = uint(keccak256(abi.encodePacked(blockhash(block.number), block.timestamp, block.difficulty))) % allNumbers.length;\n        uint num = allNumbers[ranIndex];\n        removeFromAllNumbers(ranIndex);\n        emit RandomNumber(num);\n    }\n\n    function removeFromAllNumbers(uint i) internal {\n        allNumbers[i] = allNumbers[allNumbers.length - 1];\n        allNumbers.pop();\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200,
+      "details": {
+        "yul": false
+      }
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}

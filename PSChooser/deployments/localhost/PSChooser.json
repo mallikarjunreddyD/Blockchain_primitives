@@ -1,0 +1,106 @@
+{
+  "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "number",
+          "type": "uint256"
+        }
+      ],
+      "name": "RandomNumber",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "allNumbers",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "genNumber",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x79e3c4ebf462626e6464245df371c15dd492497a3fd8cb4cc247b49960921367",
+  "receipt": {
+    "to": null,
+    "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+    "transactionIndex": 0,
+    "gasUsed": "1493807",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x4525d9774a8c8bf496b5d3bc140b0f257f3ba0ebdace0406ec6c6c9f6d13d078",
+    "transactionHash": "0x79e3c4ebf462626e6464245df371c15dd492497a3fd8cb4cc247b49960921367",
+    "logs": [],
+    "blockNumber": 1,
+    "cumulativeGasUsed": "1493807",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "abf6b9885a9019da86cf1d4665cc74af",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"number\",\"type\":\"uint256\"}],\"name\":\"RandomNumber\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"allNumbers\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"genNumber\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/PSChooser.sol\":\"PSChooser\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"details\":{\"constantOptimizer\":true,\"cse\":true,\"deduplicate\":true,\"inliner\":true,\"jumpdestRemover\":true,\"orderLiterals\":true,\"peephole\":true,\"yul\":false},\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/PSChooser.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.17;\\n\\ncontract PSChooser {\\n   uint[] public allNumbers;\\n   constructor() {\\n     for (uint i=1;i<=56;i++) {\\n        allNumbers.push(i);\\n     }\\n   }\\n   event RandomNumber(uint number);\\n    \\n    function genNumber() public {\\n        uint ranIndex = uint(keccak256(abi.encodePacked(blockhash(block.number), block.timestamp, block.difficulty))) % allNumbers.length;\\n        uint num = allNumbers[ranIndex];\\n        removeFromAllNumbers(ranIndex);\\n        emit RandomNumber(num);\\n    }\\n\\n    function removeFromAllNumbers(uint i) internal {\\n        allNumbers[i] = allNumbers[allNumbers.length - 1];\\n        allNumbers.pop();\\n    }\\n}\\n\",\"keccak256\":\"0xfaa3d73effab6c1bfc08951384399ab0e764315038a53273e80d85eb05f0972e\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060015b6038811161006057600080546001810182559080527f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e56301819055806100588161007c565b915050610014565b50610096565b634e487b7160e01b600052601160045260246000fd5b6000600019820361008f5761008f610066565b5060010190565b6102e3806100a56000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c80638671fae51461003b578063d0095cc614610064575b600080fd5b61004e6100493660046101b2565b61006e565b60405161005b91906101e3565b60405180910390f35b61006c61008f565b005b6000818154811061007e57600080fd5b600091825260209091200154905081565b600080546040516100a990434090429044906020016101f7565b6040516020818303038152906040528051906020012060001c6100cc9190610244565b905060008082815481106100e2576100e2610258565b906000526020600020015490506100f882610133565b7fec6cdc8e735e4069f6e89062582f3e5532a8e71373e7ef2962fa916cf2af21f28160405161012791906101e3565b60405180910390a15050565b6000805461014390600190610284565b8154811061015357610153610258565b90600052602060002001546000828154811061017157610171610258565b9060005260206000200181905550600080548061019057610190610297565b6001900381819060005260206000200160009055905550565b80355b92915050565b6000602082840312156101c7576101c7600080fd5b60006101d384846101a9565b949350505050565b805b82525050565b602081016101ac82846101db565b806101dd565b600061020382866101f1565b60208201915061021382856101f1565b60208201915061022382846101f1565b506020019392505050565b634e487b7160e01b600052601260045260246000fd5b6000826102535761025361022e565b500690565b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052601160045260246000fd5b818103818111156101ac576101ac61026e565b634e487b7160e01b600052603160045260246000fdfea2646970667358221220996e5d3d7262e766a9eeae4b7fddb59e5152dd3ae23a6bdafef5219562b98d3e64736f6c63430008110033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c80638671fae51461003b578063d0095cc614610064575b600080fd5b61004e6100493660046101b2565b61006e565b60405161005b91906101e3565b60405180910390f35b61006c61008f565b005b6000818154811061007e57600080fd5b600091825260209091200154905081565b600080546040516100a990434090429044906020016101f7565b6040516020818303038152906040528051906020012060001c6100cc9190610244565b905060008082815481106100e2576100e2610258565b906000526020600020015490506100f882610133565b7fec6cdc8e735e4069f6e89062582f3e5532a8e71373e7ef2962fa916cf2af21f28160405161012791906101e3565b60405180910390a15050565b6000805461014390600190610284565b8154811061015357610153610258565b90600052602060002001546000828154811061017157610171610258565b9060005260206000200181905550600080548061019057610190610297565b6001900381819060005260206000200160009055905550565b80355b92915050565b6000602082840312156101c7576101c7600080fd5b60006101d384846101a9565b949350505050565b805b82525050565b602081016101ac82846101db565b806101dd565b600061020382866101f1565b60208201915061021382856101f1565b60208201915061022382846101f1565b506020019392505050565b634e487b7160e01b600052601260045260246000fd5b6000826102535761025361022e565b500690565b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052601160045260246000fd5b818103818111156101ac576101ac61026e565b634e487b7160e01b600052603160045260246000fdfea2646970667358221220996e5d3d7262e766a9eeae4b7fddb59e5152dd3ae23a6bdafef5219562b98d3e64736f6c63430008110033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 4,
+        "contract": "contracts/PSChooser.sol:PSChooser",
+        "label": "allNumbers",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_array(t_uint256)dyn_storage"
+      }
+    ],
+    "types": {
+      "t_array(t_uint256)dyn_storage": {
+        "base": "t_uint256",
+        "encoding": "dynamic_array",
+        "label": "uint256[]",
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}
