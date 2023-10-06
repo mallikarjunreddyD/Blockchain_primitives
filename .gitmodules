@@ -1,0 +1,3 @@
+[submodule "minesim"]
+	path = minesim
+	url = https://github.com/LarryRuane/minesim.git

@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	fmt.Println(getHash("John smiti"))
+	fmt.Println(getHash("John smith"))
 	//fmt.Println(getHash("Lisa Smith"))
 	//fmt.Println(getHash("Sam Doe"))
 	//fmt.Println(getHash("Sandra Dee"))
