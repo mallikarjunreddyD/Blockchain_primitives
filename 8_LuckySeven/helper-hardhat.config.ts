@@ -1,4 +1,4 @@
-export const developmentChains = ["hardhat", "localhost"]
+export const developmentChains = ["hardhat", "localhost",]
 
 export interface networkConfigItem {
     ethUsdPriceFeed?: string

@@ -5,7 +5,7 @@ export async function genNumber() {
     console.log("Getting Random number  ................")
     const luckySeven = await ethers.getContract("PSChooser")
     
-    for(let i=0;i<54;i++){
+    for(let i=0;i<56;i++){
     const tx = await luckySeven.genNumber()
     const txReceipt = await tx.wait()
     const result = txReceipt.events[0].args.number;
