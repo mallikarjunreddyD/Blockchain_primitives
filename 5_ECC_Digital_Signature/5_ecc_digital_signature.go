@@ -40,7 +40,8 @@ func genSignature(messgae []byte) ([]byte, string) {
 	return publicKey, signature
 }
 func verifySignature(message []byte, signature string) []byte {
-	publickey, err := ethCrypto.Ecrecover(ethCrypto.Keccak256Hash(message).Bytes(), ethCommon.Hex2Bytes(signature))
+	message2 := []byte("Hai")
+	publickey, err := ethCrypto.Ecrecover(ethCrypto.Keccak256Hash(message2).Bytes(), ethCommon.Hex2Bytes(signature))
 	if err != nil {
 		fmt.Println(err)
 	}
